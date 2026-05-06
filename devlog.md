@@ -12,7 +12,7 @@ This program will be about creating and managing index files.
 
 *Index File:*
 - Split into blocks of 512 bytes
-  > Each node holds one block (512 bytes)
+  - Each node holds one block (512 bytes)
 - File header uses ENTIRE first block
 - New nodes append
 - Empty space in blocks we reamin unused (thank god for me)
