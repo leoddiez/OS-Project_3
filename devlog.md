@@ -40,3 +40,5 @@ If a child is a leaf node, the corresponding id will be zero.
 
 *NOTE: sequence of keys, vals and c_pntrs correspond to one another. i.e. key 0 corr to first val, and the first c_pntr is the one containing all enteries w/ a key LESS THAN the first key, and so on (it's organized like a normal b-tree girl lol)
 
+Choices: Im 100% doing this one in java because it's easier for this, and I have done something similar before to this in that language. It also makes it a little nicer so I don't have to think as hard about the big endian thing. Im gonna start by writing main and then probably the classes I need. I know the commands will be voids and will take up a good chunk of code, so I'm going to focus that after I write those two out.
+
