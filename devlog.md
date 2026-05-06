@@ -21,22 +21,22 @@ This program will be about creating and managing index files.
 
   > *Header Format:*
 - *can* be maintained in mem, by needs to be insync w/ file. Header has the following fields:
-• 8-bytes: The magic number “4348PRJ3” (as a sequence of ASCII values)
-• 8-bytes: The id of the block containing the root node. This field is zero if the tree is empty.
-• 8-bytes: The id of the next block to be added to the file. This is the next location for a new node.
-• The remaining bytes are unused.
+  - 8-bytes: The magic number “4348PRJ3” (as a sequence of ASCII values)
+  - 8-bytes: The id of the block containing the root node. This field is zero if the tree is empty.
+  - 8-bytes: The id of the next block to be added to the file. This is the next location for a new node.
+  - The remaining bytes are unused.
 
   > *B-Tree*
 - have a **minimal degree 10**. gives 19 key/val pairs, and 20 child pointers.
 - Each node in a single block w/ some header info. Node fields IN ORDER:
-• 8-bytes: The block id this node is stored in.
-• 8-bytes: The block id this nodes parent is located. If this node is the root, then this field is zero.
-• 8-bytes: Number of key/value pairs currently in this node.
-• 152-bytes: A sequence of 19 64-bit keys
-• 152-bytes: A sequence of 19 64-bit values
-• 160-bytes: A sequence of 20 64-bit offsets. These block ids are the child pointers for this node.
+  - 8-bytes: The block id this node is stored in.
+  - 8-bytes: The block id this nodes parent is located. If this node is the root, then this field is zero.
+  - 8-bytes: Number of key/value pairs currently in this node.
+  - 152-bytes: A sequence of 19 64-bit keys
+  - 152-bytes: A sequence of 19 64-bit values
+  - 160-bytes: A sequence of 20 64-bit offsets. These block ids are the child pointers for this node.
 If a child is a leaf node, the corresponding id will be zero.
-• Remaining bytes are unused.
+  - Remaining bytes are unused.
 
 *NOTE: sequence of keys, vals and c_pntrs correspond to one another. i.e. key 0 corr to first val, and the first c_pntr is the one containing all enteries w/ a key LESS THAN the first key, and so on (it's organized like a normal b-tree girl lol)
 
