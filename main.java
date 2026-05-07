@@ -4,38 +4,6 @@ import java.nio.file.*;
 
 public class P3 {
 
-  static final int BLOCK_SIZE = 512;
-  static final int MIN_DEGREE = 10;
-  static final int MAX_KEYS = 19;
-  static final int MAX_CHILD = 20;
-
-  class Header {
-    long root;
-    long nextBlock;
-    byte[] MAGICIAN = "4348PRJ3";
-
-    static void getBytes() {
-      return;
-    }
-
-  }
-
-  static class Node {
-    long bID;
-    long pID;
-    long pairs;
-    long[] keys = new long[MAX_KEYS];
-    long[] val = new long[MAX_KEYS];
-    long[] child = new long[MAX_CHILD];
-
-    Node(long bID) {
-      this.bID = bID;
-      this.pID = 0;
-      this.pairs = 0;
-    }
-
-  }
-
   public static void main(String[] args) {
     if(args.length < 1) {
       System.err.println("Unknown command");
