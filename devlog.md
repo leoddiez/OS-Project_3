@@ -42,3 +42,5 @@ If a child is a leaf node, the corresponding id will be zero.
 
 Choices: Im 100% doing this one in java because it's easier for this, and I have done something similar before to this in that language. It also makes it a little nicer so I don't have to think as hard about the big endian thing. Im gonna start by writing main and then probably the classes I need. I know the commands will be voids and will take up a good chunk of code, so I'm going to focus that after I write those two out.
 
+# Session 2 May 7th 2026 17:00
+I am going to try and finish my code today. I need to made the read a write for the header, and all the command functions. I'm changing my format becuase I dont like having everything in one file, so i'm separating everything, having a node, header, main, and btree file.
