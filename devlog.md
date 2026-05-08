@@ -63,7 +63,7 @@ finishing node file and btree file. need to convert the block in node to somethi
 - @ 05:11
   node class is done, added block converstion functions (to and from)
 
--@ 08:26 
+- @ 08:26 
   everything has been compiled and is all written up, going to do my first test run now
 
 When i try to insert a second time, it ends up in an infinite loop, so i've been trying to fix that for the past hour
