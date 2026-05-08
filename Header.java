@@ -31,7 +31,7 @@ public class Header {
       byte[] blk = new byte[BLOCK_SIZE];
       ByteBuffer b = ByteBuffer.wrap(blk).order(ByteOrder.BIG_ENDIAN);
       b.putLong(MAGICIAN);
-      b.putlong(root);
+      b.putLong(root);
       b.putLong(nextBlock);
       f.seek(0);
       f.write(blk);

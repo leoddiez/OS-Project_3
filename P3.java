@@ -84,10 +84,7 @@ public class P3 {
         try(RandomAccessFile f = new RandomAccessFile(fname, "rw")) {
           Header h = Header.read(f);
           if(h.root == 0) {System.out.println("...aint nuthin in the index bro..."); break;}
-          BTree tree = new BTree(f, h);
-          tree.inorder((k, v) -> {
-            System.out.println(Long.parseUnsignedLong(k) + "," + Long.parseUnsignedLong(v));
-          });
+          new BTree(f, h).inorder( (k, v) -> System.out.println(Long.toUnsignedString(k) + "," + Long.toUnsignedString(v)));
         } catch (IOException e) {System.err.println("Erorr in print: " + e.getMessage()); System.exit(1);}
         break;
 
@@ -103,6 +100,7 @@ public class P3 {
           PrintWriter pw = new PrintWriter(new FileWriter(csv));
           tree.inorder((k, v) -> pw.println(Long.toUnsignedString(k) + "," + Long.toUnsignedString(v)));
           System.out.println(csv + "... extracted to this location");
+          pw.close();
         } catch (IOException e) {System.err.println("Erorr in extract: " + e.getMessage()); System.exit(1);}
         break;
 

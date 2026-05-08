@@ -36,6 +36,7 @@ public class BTree {
 
   long[] search(long nID, long k) throws IOException {
     Node n = rNode(nID);
+    int i = 0;
     while(i < n.pairs && k > n.keys[i]) {i++;}
     if (i < n.pairs && k == n.keys[i]) {return new long[] {n.keys[i], n.val[i]};} 
     if (n.isLeaf()) {return null;}
@@ -48,13 +49,11 @@ public class BTree {
     if (h.root == 0) {
         Node root = new Node(alloB());
         h.root = root.bID;
-        root.key[0] = key;
+        root.keys[0] = key;
         root.val[0] = val;
         root.pairs = 1;
         wNode(root);
         h.write(f);
-        file.close();
-
         return;
     }
 
@@ -101,7 +100,7 @@ public class BTree {
         return;
       }
       i++;
-      Node c = rNode(n.c[j]);
+      Node c = rNode(n.child[i]);
       if (c.isFull()) {
         split(c, n, i);
         if (k > n.keys[i]) {i++;}
@@ -109,8 +108,8 @@ public class BTree {
           System.err.println("Error: key already exists");
           return;
         }
-      c = null;
-      c = rNode(n.c[i]);
+        c = null;
+        c = rNode(n.child[i]);
       }
       n = null;
       insertMid(c, k, v);
@@ -175,7 +174,7 @@ public class BTree {
       point.visit(keys[i], val[i]);
     }
 
-    if(cID[(int) pairs != 0]) {inorder(cID[(int) pairs], point);}
+    if(cID[(int) pairs] != 0) {inorder(cID[(int) pairs], point);}
 
   }
 }

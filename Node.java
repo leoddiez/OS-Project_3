@@ -26,11 +26,11 @@ public class Node {
       ByteBuffer b = ByteBuffer.wrap(block).order(ByteOrder.BIG_ENDIAN);
       long bID = b.getLong();
       Node n = new Node(bID);
-      n.PID = b.getLong();
+      n.pID = b.getLong();
       n.pairs = b.getLong();
-      for (int j  = 0; j < MAX_KEYS; j++) { n.keys[j] = b.getlong();}
-      for (int j  = 0; j < MAX_KEYS; j++) { n.val[j] = b.getlong();}
-      for (int j  = 0; j < MAX_CHILD; j++) { n.child[j] = b.getlong();}
+      for (int j  = 0; j < MAX_KEYS; j++) { n.keys[j] = b.getLong();}
+      for (int j  = 0; j < MAX_KEYS; j++) { n.val[j] = b.getLong();}
+      for (int j  = 0; j < MAX_CHILD; j++) { n.child[j] = b.getLong();}
       return n;
     }
 
@@ -43,7 +43,7 @@ public class Node {
       for (int j  = 0; j < MAX_KEYS; j++) { b.putLong(bID);}
       for (int j  = 0; j < MAX_KEYS; j++) { b.putLong(pID);}
       for (int j  = 0; j < MAX_CHILD; j++) { b.putLong(pairs);}
-      return n;
+      return block;
     }
 
   }
