@@ -56,3 +56,16 @@ I am going to try and finish my code today. I need to made the read a write for 
 
 - @ 23:38
   finally finished main, gonna work on the node class, and then tackle the rest of btree the best i can.
+
+# Session 3 May 8th 2026 04:55 
+finishing node file and btree file. need to convert the block in node to something readable for the buffer, and then the reverse.
+
+- @ 05:11
+  node class is done, added block converstion functions (to and from)
+
+-@ 08:26 
+  everything has been compiled and is all written up, going to do my first test run now
+
+When i try to insert a second time, it ends up in an infinite loop, so i've been trying to fix that for the past hour
+- @ 09:46
+  i have finished. everything works as it should now, and i think i edge case tested as much as i could to ensure things worked properly. i had to fix a few spots, but what was causing my infinite loop was in my node class. the toblock wasnt actualy writing back for int j, just the variable. 
