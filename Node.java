@@ -40,9 +40,9 @@ public class Node {
       b.putLong(bID);
       b.putLong(pID);
       b.putLong(pairs);
-      for (int j  = 0; j < MAX_KEYS; j++) { b.putLong(bID);}
-      for (int j  = 0; j < MAX_KEYS; j++) { b.putLong(pID);}
-      for (int j  = 0; j < MAX_CHILD; j++) { b.putLong(pairs);}
+      for (int j  = 0; j < MAX_KEYS; j++) { b.putLong(keys[j]);}
+      for (int j  = 0; j < MAX_KEYS; j++) { b.putLong(val[j]);}
+      for (int j  = 0; j < MAX_CHILD; j++) { b.putLong(child[j]);}
       return block;
     }
 

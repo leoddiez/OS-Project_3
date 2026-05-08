@@ -67,10 +67,7 @@ public class BTree {
         wNode(root);
         split(root, nRoot, 0);
         insertMid(nRoot, key, val);
-        wNode(nRoot);
-
     } else {
-      //root = null;? dunno if needed
       insertMid(root, key, val);
     }
     h.write(f);
@@ -100,6 +97,10 @@ public class BTree {
         return;
       }
       i++;
+      if(n.child[i] == 0) {
+        System.err.println("Error: corrupt at child index " + i);
+        return;
+      }
       Node c = rNode(n.child[i]);
       if (c.isFull()) {
         split(c, n, i);
@@ -119,12 +120,12 @@ public class BTree {
   void split(Node c, Node p, int idx) throws IOException { // FAAAHHHHHHH
     int i = Node.MIN_DEGREE;
     Node s = new Node(alloB());
-    s.pID = p.pID;
+    s.pID = p.bID;
     s.pairs = i - 1;
 
     for(int j = 0; j < i -1; j++) {
       s.keys[j] = c.keys[i + j];
-      s.val[j] = s.val[i + j];
+      s.val[j] = c.val[i + j];
     }
     if (!c.isLeaf()) {
       for (int j = 0; j < i; j++) {s.child[j] = c.child[i + j];}
@@ -137,22 +138,27 @@ public class BTree {
       }
     }
     c.pairs = i - 1;
+    long pk = c.keys[i -1];
+    long pv = c.val[i -1];
 
     for(int j = i - 1; j < Node.MAX_KEYS; j++) {c.keys[j] = 0; c.val[j] = 0;}
     for(int j = i; j < Node.MAX_CHILD; j++) {c.child[j] = 0;}
 
-    for(int j = (int) p.pairs; j >= idx + 1; j--) {
-      p.child[j + 1] = p.child[j];
-      p.child[idx + 1] = s.bID;
+    for(int j = (int) p.pairs; j >= idx + 1; j--) {p.child[j + 1] = p.child[j];}
+    for (int j = (int) p.pairs - 1; j >= idx; j--) {
+      p.keys[j + 1] = p.keys[j];
+      p.val[j + 1] = p.val[j];
     }
-    p.keys[idx] = c.keys[i - 1];
-    p.val[idx] = c.val[i - 1];
+    p.child[idx + 1] = s.bID;
+    p.keys[idx] = pk;
+    p.val[idx] = pv;
     p.pairs++;
     c.keys[i - 1] = 0;
     c.val[i - 1] = 0;
 
     wNode(c);
     wNode(s);
+    wNode(p);
 
     return;
   }

@@ -15,7 +15,7 @@ public class P3 {
       case "create":
         if(args.length != 2) {System.err.println("Usage: create <file>"); System.exit(1);}
         fname = args[1];
-        if (!new File(fname).exists()) {System.err.println("File: " + fname + " not found/valid"); System.exit(1);}
+        if (new File(fname).exists()) {System.err.println("File: " + fname + " exists already"); System.exit(1);}
         try(RandomAccessFile f = new RandomAccessFile(fname, "rw")) {
           Header h = new Header();
           h.write(f);
@@ -32,6 +32,7 @@ public class P3 {
         try(RandomAccessFile f = new RandomAccessFile(fname, "rw")) {
           Header h = Header.read(f);
           new BTree(f, h).insert(key, val);
+          System.out.println("Inserted!");
         } catch (IOException e) {System.err.println("Erorr in insert: " + e.getMessage()); System.exit(1);}
         break;
 
