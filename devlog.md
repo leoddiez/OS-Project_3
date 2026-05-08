@@ -4,7 +4,7 @@ This program will be about creating and managing index files.
 
 *Commands:*
 - create: new index file, first arg after it is the name, if it already exists it fails w/ error and curr file is untouched
-- insert first arg after is index file name, if DNE or not valid, exit w/ error, else, next 2 args are the key and the value (signed int is fine in java), then insert into the B-tree
+- insert: first arg after is index file name, if DNE or not valid, exit w/ error, else, next 2 args are the key and the value (signed int is fine in java), then insert into the B-tree
 - search: first arg after is index file name, if DNE or not valid, exit w/ error, else, next arg is the key (signed int is fine in java), search index, if found print key/value pair, else, error msg
 - load: first arg after is index file name, if DNE or not valid, exit w/ error, else, next arg is the csv file, if DNE, exit w/ error msg, else, each line of the file is a comma separated key/value pair. Read the file, inserting each pair as above with the insert command
 - print: first arg after is index file name, if DNE or not valid, exit w/ error, else, print every key/value pair in the index to standard (console) output
@@ -44,3 +44,15 @@ Choices: Im 100% doing this one in java because it's easier for this, and I have
 
 # Session 2 May 7th 2026 17:00
 I am going to try and finish my code today. I need to made the read a write for the header, and all the command functions. I'm changing my format becuase I dont like having everything in one file, so i'm separating everything, having a node, header, main, and btree file.
+
+- @ 17:40
+  in my main file i have not wrapped the main section in a try-catch block...i do not know if that will cause me problems lated in runtime but we will see. if it does i will add it in. it has caused me issues before in previous projects lol.
+
+- @ 18:06
+  i'm realizing insert is going to take a lot more thinking than i initially thought bc of the splitting once the root/node gets full....so i gotta add that too.
+
+- @ 19:25
+  decided to get it over with and did the header read and write. i had to look up a bunch of stuff becuase i never worked with random access files before, so that was fun. it was just slightly more different than writing to a normal file, but apart from that it was okay. i mainly did it because i wanted to stop writing the insert function.
+
+- @ 23:38
+  finally finished main, gonna work on the node class, and then tackle the rest of btree the best i can.
