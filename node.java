@@ -6,7 +6,7 @@ public class Node {
     long[] val = new long[MAX_KEYS];
     long[] child = new long[MAX_CHILD];
 
-    Node(long bID) {
+    public Node(long bID) {
       this.bID = bID;
       this.pID = 0;
       this.pairs = 0;
