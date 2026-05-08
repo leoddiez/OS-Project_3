@@ -19,7 +19,7 @@ public class P3 {
         try(RandomAccessFile f = new RandomAccessFile(fname, "rw")) {
           Header h = new Header();
           h.write(f);
-          System.out.println("Created index file: " + fname);
+          System.out.println("Created file: " + fname);
         } catch (IOException e) {System.err.println("Erorr in create: " + e.getMessage()); System.exit(1);}
         break;
 
@@ -32,7 +32,6 @@ public class P3 {
         try(RandomAccessFile f = new RandomAccessFile(fname, "rw")) {
           Header h = Header.read(f);
           new BTree(f, h).insert(key, val);
-          System.out.println("Inserted!");
         } catch (IOException e) {System.err.println("Erorr in insert: " + e.getMessage()); System.exit(1);}
         break;
 
