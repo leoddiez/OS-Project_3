@@ -12,5 +12,5 @@
 
 # Program Execution
 Run:
-javac P3.java Header.java Node.java BTree.java
-java P3 <command> <args>
+- javac P3.java Header.java Node.java BTree.java
+- java P3 <command> <args>
