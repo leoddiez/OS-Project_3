@@ -118,6 +118,43 @@ public class BTree {
   }
 
   void split(Node c, Node p, int idx) throws IOException { // FAAAHHHHHHH
+    int i = Node.MIN_DEGREE;
+    Node s = new Node(alloB());
+    s.pID = p.pID;
+    s.pairs = i - 1;
+
+    for(int j = 0; j < i -1; j++) {
+      s.keys[j] = c.keys[i + j];
+      s.val[j] = s.val[i + j];
+    }
+    if (!c.isLeaf()) {
+      for (int j = 0; j < i; j++) {s.child[j] = c.child[i + j];}
+      for (int j = 0; j < i; j++) {
+        if (s.child[j] != 0) {
+          Node gc = rNode(s.child[j]);
+          gc.pID = s.bID;
+          wNode(gc);
+        }
+      }
+    }
+    c.pairs = i - 1;
+
+    for(int j = i - 1; j < Node.MAX_KEYS; j++) {c.keys[j] = 0; c.val[j] = 0;}
+    for(int j = i; j < Node.MAX_CHILD; j++) {c.child[j] = 0;}
+
+    for(int j = (int) p.pairs; j >= idx + 1; j--) {
+      p.child[j + 1] = p.child[j];
+      p.child[idx + 1] = s.bID;
+    }
+    p.keys[idx] = c.keys[i - 1];
+    p.val[idx] = c.val[i - 1];
+    p.pairs++;
+    c.keys[i - 1] = 0;
+    c.val[i - 1] = 0;
+
+    wNode(c);
+    wNode(s);
+
     return;
   }
 
